@@ -2,17 +2,13 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
 
-
 year="2019"
 team="TOR"
-site="https://www.basketball-reference.com/teams/"+team+"/"+year+"/gamelog/"
+url="https://stats.nba.com/teams/traditional/?sort=GP&dir=-1"
+html =urlopen(url)
+bsObj = BeautifulSoup(html,"lxml")
 
+new = bsObj.find_all("div",{"class":"nba-stat-table__overflow"})
 
-res = urlopen(site)
-rawpage = res.read().decode("utf-8")
-page = rawpage.replace('<!-->', '')
-bsObj = BeautifulSoup(page, "html.parser")
+print(new)
 
-table = bsObj.find("table",{"class":"row_summable sortable stats_table now_sortable"}).find_all("tr",{"data-stat":"ranker"})
-
-print (table)
