@@ -1,9 +1,7 @@
 import requests
 from lxml import html
 import csv
-import pandas as pd
 import csv
-from ast import literal_eval
 
 
 class Webscraper:
