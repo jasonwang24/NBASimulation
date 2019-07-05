@@ -8,21 +8,20 @@ import random as rnd
 points=[]
 opp_points=[]
 
-with open('scrapedData.csv','r') as csv_file:
-    csv_reader=csv.reader(csv_file)
+with open('scrapedData.csv', 'r') as csv_file:
+    csv_reader = csv.reader(csv_file)
 
     for line in csv_reader:
         points.append(int(line[2]))
         opp_points.append(int(line[3]))
 
-    #plt.hist(points)
-    #plt.show()
-    #print(st.mean(points))
-    #print(st.stdev(points))
+test=Teams(points,opp_points)
+mean=test.pointsMean(points)
+oppMean=test.oppPtsMean(opp_points)
+std=test.pointsStd(points)
+oppstd=test.oppPtsStd(opp_points)
 
-    #plt.hist(opp_points)
-    #plt.show()
-    #print(st.mean(opp_points))
-    #print(st.stdev(opp_points))
-
-    print(rnd.gauss(st.mean(points),st.stdev(points)))
+print(mean)
+print(oppMean)
+print(std)
+print(oppstd)
