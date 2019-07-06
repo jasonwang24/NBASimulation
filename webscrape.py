@@ -6,15 +6,12 @@ import csv
 
 class Webscraper:
 
-    year = '2019'
-    team = 'TOR'
-
     def __init__(self,year,team):
         Webscraper.year=year
         Webscraper.team=team
         self.scraping(Webscraper.year,Webscraper.team)
 
-    def scraping(year,team):
+    def scraping(self,year,team):
         csvFile = open('scrapedData.csv', 'w+', newline='')
 
         r = requests.get('https://www.basketball-reference.com/teams/' + team+ '/' + year + '/gamelog/')
@@ -63,4 +60,3 @@ class Webscraper:
             csvFile.close()
 
 
-    scraping(year,team)
