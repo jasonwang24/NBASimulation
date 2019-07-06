@@ -51,13 +51,6 @@ TOROppMean=opp_mean()
 TORStd=std()
 TOROppStd=opp_std()
 
-'''
-print(TORMean)
-print(TOROppMean)
-print(TORStd)
-print(TOROppStd)
-print(TORPts)
-'''
 
 currentTeam='GSW'
 dataCalc(statsYear,currentTeam)
@@ -66,32 +59,43 @@ GSWOppMean=opp_mean()
 GSWStd=std()
 GSWOppStd=opp_std()
 
-'''
-print(GSWMean)
-print(GSWOppMean)
-print(GSWStd)
-print(GSWOppStd)
-print(GSWPts)
-'''
 
-teamOneScore=0
-teamTwoScore=0
-gamecount=0
+count=0
+rapwins=0
+gswwins=0
 
-while teamOneScore!=4 and teamTwoScore!=4 and gamecount<7:
-    gamecount=gamecount+1
-    teamOne=(rnd.gauss(TORMean,TORStd)+rnd.gauss(GSWOppMean,GSWOppStd))/2
-    teamTwo=(rnd.gauss(GSWMean,GSWStd)+rnd.gauss(TOROppMean,TOROppStd))/2
+while(count!=10):
 
-    if int(round(teamOne))>int(round(teamTwo)):
-        teamOneScore=teamOneScore+1
-    elif int(round(teamOne))<int(round(teamTwo)):
-        teamTwoScore=teamOneScore+1
+    teamOneScore=0
+    teamTwoScore=0
+    gamecount=0
 
-    print (str(gamecount)+": ")
-    print (int(round(teamOne)))
-    print (int(round(teamTwo)))
+    while teamOneScore!=4 and teamTwoScore!=4 and gamecount!=7:
+        teamOne=(rnd.gauss(TORMean,TORStd)+rnd.gauss(GSWOppMean,GSWOppStd))/2
+        teamTwo=(rnd.gauss(GSWMean,GSWStd)+rnd.gauss(TOROppMean,TOROppStd))/2
+
+        if teamOne!=teamTwo:
+            gamecount = gamecount + 1
+
+        if int(round(teamOne))>int(round(teamTwo)):
+            teamOneScore=teamOneScore+1
+        elif int(round(teamOne))<int(round(teamTwo)):
+            teamTwoScore=teamTwoScore+1
+
+        print (str(gamecount)+": ")
+        print (int(round(teamOne)))
+        print (int(round(teamTwo)))
 
 
-print(teamOneScore)
-print(teamTwoScore)
+    print(teamOneScore)
+    print(teamTwoScore)
+
+    if teamOneScore>teamTwoScore:
+        rapwins+=1
+    else:
+        gswwins+=1
+
+    count=count+1
+
+print(rapwins)
+print(gswwins)
