@@ -3,17 +3,33 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  animation: App-logo-spin infinite 10s linear;
+  height: 20vmin;
   pointer-events: none;
 }
 
+.Top {
+  background-color: #659DBD;
+  padding: 100px;
+  justify-content: center;
+  color: white;
+}
+
+.App-raptors {
+  height:35vmin;
+  flex:33.33%;
+}
+
+.App-warriors {
+  height:35vmin;
+  flex:33.33%;
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #659DBD;
+  min-height: 50vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
