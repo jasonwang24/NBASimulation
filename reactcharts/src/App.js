@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import logo from './logo.svg';
 import title from './title.svg';
 import raptors from './raptors.svg';
@@ -6,7 +6,61 @@ import warriors from './warriors.svg';
 import './App.css';
 import Chart from './components/Chart';
 
-function App() {
+class App extends Component {
+
+constructor() {
+  super();
+  this.state={
+    chartData:{}
+  }
+}
+
+componentWillMount(){
+  this.getChartData();
+}
+
+getChartData() {
+  //ajax calls here
+  this.setState({
+    chartData:{
+      labels:['4 games','5 games','6 games','7 games'],
+      datasets:[
+        {
+          label:'Raptors',
+          data:[
+            5.1,
+            12.8,
+            14.4,
+            12.6
+          ],
+          backgroundColor:[
+            'rgba(255, 0,0)',
+            'rgba(255, 0,0)',
+            'rgba(255, 0,0)',
+            'rgba(255, 0,0)'
+          ]
+        },
+        {
+          label:'Warriors',
+          data:[
+            7.8,
+            14.4,
+            21.3,
+            11.6
+          ],
+          backgroundColor:[
+            'rgba(255, 223,0)',
+            'rgba(255, 223,0)',
+            'rgba(255, 223,0)',
+            'rgba(255, 223,0)'
+          ]
+        }
+      ],
+    }
+  });
+}
+
+render() {
   return (
     <div className="App">
       <header className="Top">
@@ -24,9 +78,10 @@ function App() {
         >
         </a>
       </header>
-      <Chart />
+      <Chart chartData={this.state.chartData} legendPosition="bottom"/>
     </div>
   );
+}
 }
 
 export default App;

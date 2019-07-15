@@ -6,65 +6,61 @@ class Chart extends Component{
   constructor(props){
     super(props);
     this.state={
-      chartData:{
-        labels:['4','5','6','7'],
-        datasets:[
-          {
-            label:'Raptors',
-            data:[
-              10,
-              20,
-              30,
-              40
-            ],
-            backgroundColor:[
-              'rgba(255, 0,0)',
-              'rgba(255, 0,0)',
-              'rgba(255, 0,0)',
-              'rgba(255, 0,0)'
-            ]
-          },
-          {
-            label:'Warriors',
-            data:[
-              10,
-              20,
-              30,
-              40
-            ],
-            backgroundColor:[
-              'rgba(255, 223,0)',
-              'rgba(255, 223,0)',
-              'rgba(255, 223,0)',
-              'rgba(255, 223,0)'
-            ]
-          }
-        ],
-      }
+      chartData:props.chartData
     }
   }
+
+static defaultProps ={
+  displayTitle:true,
+  displayLegend:false,
+  legendPosition:'right'
+}
 
   render(){
     return(
       <div className="chart">
-      <Bar
-        data={this.state.chartData}
-        options={{
-            title:{
-              display:true,
-              text:'NBA Finals Outcome Simulations',
-              position:'top',
-              fontSize:25
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }}
-      />
+        <Bar
+          data={this.state.chartData}
+          options={{
+              title:{
+                display:this.props.displayTitle,
+                text:'NBA Finals Outcome Simulations (%)',
+                fontSize:40
+              },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              },
+              legend: {
+                position:this.props.legendPosition
+              }
+          }}
+        />
+
+        <Pie
+          data={this.state.chartData}
+          options={{
+              title:{
+                display:this.props.displayTitle,
+                text:'Number of Games to Win (%)',
+                fontSize:40
+              },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              },
+              legend: {
+                display:this.props.displayLegend,
+              }
+          }}
+        />
+
       </div>
     )
   }
