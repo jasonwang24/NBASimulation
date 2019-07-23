@@ -48,13 +48,6 @@ static defaultProps ={
                 text:'Number of Games to Win (%)',
                 fontSize:40
               },
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
-                  }]
-              },
               legend: {
                 display:this.props.displayLegend,
               }

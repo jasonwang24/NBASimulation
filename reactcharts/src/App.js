@@ -15,12 +15,13 @@ constructor() {
   }
 }
 
+//get data for graphs
 componentWillMount(){
   this.getChartData();
 }
 
 getChartData() {
-  //ajax calls here
+  //ajax calls go checkValidServiceWorker
   this.setState({
     chartData:{
       labels:['4 games','5 games','6 games','7 games'],
@@ -60,6 +61,7 @@ getChartData() {
   });
 }
 
+//set up source for images
 render() {
   return (
     <div className="App">

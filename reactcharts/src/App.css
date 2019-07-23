@@ -2,12 +2,18 @@
   text-align: center;
 }
 
+/*
+Add animation for basketball spinning
+*/
 .App-logo {
   animation: App-logo-spin infinite 2s linear;
   height: 20vmin;
   pointer-events: none;
 }
 
+/*
+Design for page
+*/
 .Top {
   background-color: #659DBD;
   padding: 100px;
