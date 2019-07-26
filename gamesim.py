@@ -16,15 +16,20 @@ class Teams:
         self.pointsStd(points)
         self.oppPtsStd(opp_points)
 
+
+    #calculate mean of team's points
     def pointsMean(self,points):
         return st.mean(points)
 
+    #calculate mean of opponent team's points
     def oppPtsMean(self,opp_points):
         return st.mean(opp_points)
 
+    #calculate standard deviation of team's points
     def pointsStd(self,points):
         return st.stdev(points)
 
+    #calculate standard deviation of opponent team's points
     def oppPtsStd(self,opp_points):
         return st.stdev(opp_points)
 

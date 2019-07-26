@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 points = []
 opp_points = []
 
-
+#open csv file to prepare for scraping
 def dataCalc(statsYear, currentTeam):
     scrape = Webscraper(statsYear, currentTeam)
     scrape.scraping(statsYear, currentTeam)
@@ -22,22 +22,22 @@ def dataCalc(statsYear, currentTeam):
             points.append(int(line[2]))
             opp_points.append(int(line[3]))
 
-
+#calculate team's points
 def mean():
     team = Teams(points, opp_points)
     return team.pointsMean(points)
 
-
+#calculate opponent team's points
 def opp_mean():
     team = Teams(points, opp_points)
     return team.oppPtsMean(opp_points)
 
-
+#calculate team's point standard deviation
 def std():
     team = Teams(points, opp_points)
     return team.pointsStd(points)
 
-
+#calculate opponent team's point standard deviation
 def opp_std():
     team = Teams(points, opp_points)
     return team.oppPtsStd(opp_points)
@@ -75,12 +75,14 @@ gswFive = 0
 gswSix = 0
 gswSeven = 0
 
+#run series simulation 1000 times
 while (count != 1000):
 
     teamOneScore = 0
     teamTwoScore = 0
     gamecount = 0
 
+    #for each 7 game series played, simulate scores and outcome
     while teamOneScore != 4 and teamTwoScore != 4 and gamecount != 7:
         teamOne = (rnd.gauss(TORMean, TORStd) + rnd.gauss(GSWOppMean, GSWOppStd)) / 2
         teamTwo = (rnd.gauss(GSWMean, GSWStd) + rnd.gauss(TOROppMean, TOROppStd)) / 2
@@ -123,6 +125,8 @@ while (count != 1000):
 
     count = count + 1
 
+
+#display results of simulation
 print(" ")
 print("Raptors in 4: "+str(rapsFour/1000))
 print("Raptors in 5: "+str(rapsFive/1000))
